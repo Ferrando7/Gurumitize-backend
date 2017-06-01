@@ -1,6 +1,7 @@
-# sebamaster-movie-backend application
+# sebamaster-gurumitize-backend application
 
-sebamaster-movie-frontend application can be found [here](https://github.com/sebischair/sebamaster-movie-frontend)
+Imported from https://github.com/sebischair/sebamaster-movie-frontend
+Gurumitize-frontend application can be found [here](https://github.com/Ferrando7/Gurumitize-frontend)
 
 ## Prerequisites
 
@@ -16,7 +17,7 @@ Just for the backend application:
 
 go to your project root folder via command line
 ```
-cd path/to/workspace/sebamaster-movie-frontend
+cd path/to/workspace/Gurumitize-frontend
 ```
 
 **install node dependencies**
