@@ -1,24 +1,24 @@
 // importing Event model
 var Event = require('./eventSchema');
 exports.postEvent = function(req, res) {
-    var event = new Movie(req.body);
-    //do not allow user to fake identity. The user who postet the movie must be the same user that is logged in
+    var event = new Event(req.body);
+    //do not allow user to fake identity. The user who posted the event must be the same user that is logged in
     if (!req.user.equals(event.user)) {
         res.sendStatus(401);
     }
-    event.save(function(err, m) {
+    event.save(function(err, e) {
         if (err) {
-            res.status(400).send(err);
+            res.status(500).send(err);
             return;
         }
-        res.status(201).json(m);
+        res.status(201).json(e);
     });
 };
 // Create endpoint /api/events for GET
 exports.getEvents = function(req, res) {
     Event.find(function(err, events) {
         if (err) {
-            res.status(400).send(err);
+            res.status(500).send(err);
             return;
         }
         res.json(events);
@@ -29,7 +29,7 @@ exports.getEvent = function(req, res) {
     // Use the Event model to find a specific event
     Event.findById(req.params.event_id, function(err, event) {
         if (err) {
-            res.status(400).send(err)
+            res.status(500).send(err)
             return;
         };
 
@@ -49,18 +49,18 @@ exports.putEvent = function(req, res) {
             runValidators: true
         }, function (err, event) {
         if (err) {
-            res.status(400).send(err);
+            res.status(500).send(err);
             return;
         }
         res.json(event);
     });
 };
 // Create endpoint /api/events/:event_id for DELETE
-exports.deleteMovie = function(req, res) {
+exports.deleteEvent = function(req, res) {
     // Use the Event model to find a specific event and remove it
     Event.findById(req.params.event_id, function(err, e) {
         if (err) {
-            res.status(400).send(err);
+            res.status(500).send(err);
             return;
         }
         e.remove();
