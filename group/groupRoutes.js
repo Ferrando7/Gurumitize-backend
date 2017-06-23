@@ -15,7 +15,7 @@ function groupRoutes(passport) {
 
     router.route('/')
         .post(groupController.postGroup)
-        .get(groupController.getGroup);
+        .get(groupController.getGroups);
 
     router.route('/:group_id')
         .get(groupController.getGroup)
