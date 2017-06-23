@@ -1,4 +1,4 @@
-/ Load required packages
+// Load required packages
 var mongoose = require('mongoose');
 
 // Define our group schema
