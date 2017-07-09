@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var Group   = new mongoose.Schema({
     title: String,
     description: String,
-    tags: String,
+    tags: [String],
     //public: Boolean,
     user: {
         type: mongoose.Schema.Types.ObjectId,
