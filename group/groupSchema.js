@@ -5,12 +5,12 @@ var mongoose = require('mongoose');
 var Group   = new mongoose.Schema({
     title: String,
     description: String,
-    tags: String,
+    tags: [String],
     //public: Boolean,
-    user: {
+    users: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-    }
+    }]
 });
 
 // Export the Mongoose model
