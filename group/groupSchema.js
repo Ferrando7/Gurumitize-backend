@@ -7,10 +7,10 @@ var Group   = new mongoose.Schema({
     description: String,
     tags: [String],
     //public: Boolean,
-    user: {
+    users: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-    }
+    }]
 });
 
 // Export the Mongoose model
