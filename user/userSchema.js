@@ -20,6 +20,15 @@ var userSchema = mongoose.Schema({
     email: {
         type: String,
         required: true
+    },
+    bio: {
+        type: String
+    },
+    skills: {
+        type: []
+    },
+    goals: {
+        type: String
     }
 });
 
