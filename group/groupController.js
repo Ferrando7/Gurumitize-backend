@@ -3,7 +3,7 @@ var Group = require('./groupSchema');
 exports.postGroup = function(req, res) {
     var group = new Group(req.body);
     //do not allow user to fake identity. The user who created the group must be the same user that is logged in
-    if (!req.user.equals(group.user)) {
+    if (!req.user.equals(group.users[0])) {
         res.sendStatus(401);
     }
     group.save(function(err, e) {
