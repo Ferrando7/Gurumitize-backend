@@ -86,6 +86,25 @@ exports.getUser = function(req, res) {
     });
 };
 
+exports.putUser = function(req, res) {
+    // Use the User model to find a specific User and update it
+    User.findByIdAndUpdate(
+        req.params.user_id,
+        req.body,
+        {
+            //pass the new object to cb function
+            new: true,
+            //run validations
+            runValidators: true
+        }, function (err, user) {
+        if (err) {
+            res.status(500).send(err);
+            return;
+        }
+        res.json(user);
+    });
+};
+
 function createToken(user) {
     var tokenPayload = {
         user: {
