@@ -81,7 +81,7 @@ exports.getUser = function(req, res) {
         };
 
         //TODO: Delete some info here probably
-
+        user.password = "";
         res.json(user);
     });
 };
