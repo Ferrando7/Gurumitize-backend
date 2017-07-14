@@ -86,6 +86,16 @@ exports.getUser = function(req, res) {
     });
 };
 
+exports.getUsers = function(req, res) {
+    User.find(function(err, users) {
+        if (err) {
+            res.status(500).send(err);
+            return;
+        }
+        res.json(users);
+    });
+};
+
 exports.putUser = function(req, res) {
     // Use the User model to find a specific User and update it
     User.findByIdAndUpdate(

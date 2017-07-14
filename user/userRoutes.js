@@ -6,6 +6,7 @@ function userRoutes(passport) {
     var router = require('express').Router();
 
 
+    router.get('/', passport.authenticate('jwt', {session: false}), userController.getUsers);
     router.post('/login', userController.login);
     router.post('/signup', userController.signup);
     router.post('/unregister', passport.authenticate('jwt', {session: false}), userController.unregister);
