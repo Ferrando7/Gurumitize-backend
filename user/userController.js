@@ -51,6 +51,9 @@ module.exports.signup = function(req, res){
     user.vorname = req.body.vorname;
     user.surname = req.body.surname;
     user.email = req.body.email;
+    user.bio = req.bio;
+    user.skills = req.skills;
+    user.goals = req.goals;
 
     user.save(function(err) {
         if (err) {
@@ -67,6 +70,38 @@ module.exports.unregister = function(req, res) {
         res.sendStatus(200);
     }, function(err){
         res.status(500).send(err);
+    });
+};
+
+exports.getUser = function(req, res) {
+    User.findById(req.params.user_id, function(err, user) {
+        if (err) {
+            res.status(500).send(err);
+            return;
+        };
+
+        //TODO: Delete some info here probably
+
+        res.json(user);
+    });
+};
+
+exports.putUser = function(req, res) {
+    // Use the User model to find a specific User and update it
+    User.findByIdAndUpdate(
+        req.params.user_id,
+        req.body,
+        {
+            //pass the new object to cb function
+            new: true,
+            //run validations
+            runValidators: true
+        }, function (err, user) {
+        if (err) {
+            res.status(500).send(err);
+            return;
+        }
+        res.json(user);
     });
 };
 
