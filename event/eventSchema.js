@@ -15,6 +15,10 @@ var Event   = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
+    },
+    group: {
+        type: mongoose.Schema.Types.ObjectId,
+        ret: 'Group'
     }
 });
 
