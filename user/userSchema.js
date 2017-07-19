@@ -29,7 +29,15 @@ var userSchema = mongoose.Schema({
     },
     goals: {
         type: String
-    }
+    },
+    mentors: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }],
+    mentees: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }]
 });
 
 userSchema.pre('save', function(next) {
